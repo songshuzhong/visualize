@@ -1,0 +1,172 @@
+<!--
+Version v0.0.1
+User songshuzhong@bonc.com.cn
+Copyright (C) 1997-present BON Corporation All rights reserved.
+------------------------------------------------------------
+Date         Author          Version            Description
+------------------------------------------------------------
+2018年8月9日 songshuzhong    v0.0.1            修复组件通信
+-->
+<html>
+<head>
+  <title>页面分类</title>
+  <link rel="icon" href="/img/favicon.png">
+  <link rel="stylesheet" href="/cs/baseclassify.css">
+  <link rel="stylesheet" href="/bower_components/ztree/css/zTreeStyle/zTreeStyle.css">
+  <style type="text/css">
+    .grid-container {
+      margin: 0;
+      display: grid;
+      grid-template-columns: 20% 80%;
+      grid-template-rows: 35px calc(100vh - 135px) auto;
+      grid-template-areas: "header header" "nav aside" "nav footer";
+      overflow: hidden;
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      font-size: 14px;
+    }
+    .item-header {
+      height: 100%;
+      grid-area: header;
+      display: flex;
+      align-items: center;
+    }
+    .item-nav {
+      grid-area: nav;
+    }
+    .item-aside {
+      display: flex;
+      flex-wrap: wrap;
+      grid-area: aside;
+      align-content: start;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+    .item-footer {
+      grid-area: footer;
+    }
+    .item-nav:before {
+      width: 100%;
+      height: 1px;
+      background-color: grey;
+      position: absolute;
+      content: '';
+    }
+    .item-aside:before {
+      width: 1px;
+      height: 100%;
+      background-color: grey;
+      position: absolute;
+      content: '';
+    }
+    .item-footer:before {
+      width: 80%;
+      height: 1px;
+      background-color: grey;
+      position: absolute;
+      content: '';
+    }
+    .item-aside .item-artical {
+      width: 20%;
+      height: 100px;
+      box-sizing: border-box;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .artical-active {
+      border: 1px solid #7DA2CE;
+      border-radius: 2px;
+      box-shadow: 2px 4px 4px #888888;
+      background: linear-gradient( to bottom right, #DBEAFC, #C1DCFC );
+    }
+    .item-footer span {
+      padding: 3px 20px;
+      display: block;
+      box-sizing: border-box;
+    }
+    .item-breadcrumb {
+      width: 60%;
+      padding: 8px 15px;
+      list-style: none;
+    }
+    .item-breadcrumb>li {
+      display: inline-block;
+    }
+    .item-breadcrumb>li:before {
+      padding: 0 5px;
+      color: #ccc;
+      content: "/\00a0";
+    }
+    .item-breadcrumb>li>a {
+      color: #337ab7;
+      text-decoration: none;
+    }
+    .artical-menu {
+      width: 26%;
+      height: 100px;
+      top: 0;
+      left: 100%;
+      padding: 0;
+      margin: 0;
+      justify-content: center;
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+      transition: all .5s;
+    }
+    .menu-btn {
+      margin: 3px;
+      padding: 3px;
+      text-align: center;
+      border-radius: 4px;
+      border: 1px solid #2e6da4;
+      background-color: #337ab7;
+      font-size: .75em;
+      color: white;
+      cursor: pointer;
+    }
+    .item-nav-bar {
+      width: 40%;
+      padding: 8px 15px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      list-style: none;
+    }
+  </style>
+  <script type="text/javascript">
+    var contextPath = '{{ contextPath }}';
+    var version = '{{ version }}';
+  </script>
+</head>
+<body class="grid-container">
+<header class="item-header">
+  <ol class="item-breadcrumb"></ol>
+  <ol class="item-nav-bar">
+    <li>
+      <input placeholder="请输入检索关键字" />
+      <button id="menu-btn-search" class="menu-btn">查找</button>
+    </li>
+    <li>
+      <button id="menu-btn-add" class="menu-btn">新建</button>
+    </li>
+  </ol>
+</header>
+<nav class="item-nav">
+  <ul id="pageTypeTree" class="ztree"></ul>
+</nav>
+<aside class="item-aside"></aside>
+<footer class="item-footer"></footer>
+<script type="text/javascript" src="/bower_components/ztree/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="/bower_components/ztree/js/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="/bower_components/ztree/js/jquery.ztree.excheck-3.5.js"></script>
+<script type="text/javascript" src="/bower_components/ztree/js/jquery.ztree.exedit-3.5.js"></script>
+<script type="text/javascript" src="/js/util_common.js"></script>
+<script type="text/javascript" src="/js/pagesPicker.js"></script>
+</body>
+</html>

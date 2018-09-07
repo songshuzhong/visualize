@@ -1,0 +1,28 @@
+{
+  "mysql": {
+    "xbconsole": {
+      "host": "172.16.3.24",
+      "port": 31597,
+      "user": "root",
+      "password": "ga4Ql1JT",
+      "charset": "utf8",
+      "database": "xbconsole"
+    },
+    "phachat": {
+      "host": "127.0.0.1",
+      "port": 3306,
+      "user": "root",
+      "password": "",
+      "charset": "utf8",
+      "database": "phachat"
+    }
+  },
+  "redis": {
+    "session": {
+      "host": "127.0.0.1",
+      "port": 6379,
+      "db": 2,
+      "ttl": 86400
+    }
+  }
+}

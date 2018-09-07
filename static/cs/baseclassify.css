@@ -1,0 +1,29 @@
+.ztree li span.button.add {margin-left:2px; margin-right: -1px; background-position:-144px 0; vertical-align:top; *vertical-align:middle}
+.zTreeDemoBackground ul.ztree {
+    border: none;
+    background: none;
+    overflow-y: auto;
+    height: 95%;
+    margin-top: 0;
+    width: 100%;
+}
+
+.ztree * {
+    font-size: 14px;
+}
+
+/* dataTables列内容居中 */
+.table>tbody>tr>td{
+    text-align:center;
+}
+
+/* dataTables表头居中 */
+.table>thead:first-child>tr:first-child>th{
+    text-align:center;
+}
+
+.span-error{
+    color: red;
+    text-align: right;
+    font-size: 12px;
+}

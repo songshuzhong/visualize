@@ -1,0 +1,24 @@
+{
+  "name": "visualize",
+  "version": "0.0.2",
+  "description": "visualize",
+  "main": "",
+  "authors": "songshuzhong",
+  "license": "SEE LICENSE IN <LICENSE>",
+  "homepage": "https://songshuzhong.github.io/resume/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.0.0",
+    "jquery-ui": "^1.10.2",
+    "codemirror": "^5.36.0",
+    "bootstrap": "3.3.6",
+    "ztree": "^3.5.0"
+  }
+}

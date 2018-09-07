@@ -1,0 +1,1 @@
+module.exports = { contextPath: '/xbconsole', version: '/v1' };

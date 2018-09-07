@@ -1,0 +1,124 @@
+::-webkit-scrollbar-track-piece{
+  background-color:#fff;
+  -webkit-border-radius:0;
+}
+::-webkit-scrollbar{
+  width:8px;
+  height:8px;
+}
+::-webkit-scrollbar-thumb:vertical{
+  height:50px;
+  background-color:#999;
+  -webkit-border-radius:4px;
+  outline:2px solid #fff;
+  outline-offset:-2px;
+  border:2px solid #fff;
+}
+::-webkit-scrollbar-thumb:hover{
+  height:50px;
+  background-color:#9f9f9f;
+  -webkit-border-radius:4px;
+}
+::-webkit-scrollbar-thumb:horizontal{
+  width:5px;
+  background-color:#CCCCCC;
+  -webkit-border-radius:6px;
+}
+.v-main-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+.v-sidebar-menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.v-sidebar-menu a {
+  text-decoration: none;
+}
+.v-sidebar-menu > li {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.v-sidebar-menu > li > a{
+  padding: 8px;
+  display: block;
+  border-left: 3px solid transparent;
+}
+.v-sidebar-menu > li > a:hover {
+  color: #003869;
+  border-left-color: #3c8dbc;
+}
+.v-sidebar-menu > li.active > .v-treeview-menu {
+  display: block;
+}
+li.active > a > .glyphicon-menu-right {
+  transform: rotate(90deg);
+}
+.v-treeview-menu {
+  display: none;
+  padding-left: 20px;
+  list-style: none;
+  background-color: #f4f3f4;
+}
+.v-treeview-menu > li.active > .v-treeview-menu {
+  display: block;
+}
+.v-treeview-menu > li a {
+  padding: 8px;
+  display: block;
+  font-size: 13px;
+}
+.v-treeview-menu > li > a:hover {
+  color: #003869;
+}
+.v-angle {
+  width: 20px;
+}
+.v-angle-right {
+  float: right;
+}
+.v-sidebar-menu .drag .view {
+  display: none;
+}
+.drop-helper-container .drag .view {
+  display: block;
+}
+.container.drop-helper-container {
+  width: 100%;
+  height: calc(100vh - 52px);
+  padding: 10px 10px 10px 235px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-radius: 7px;
+}
+#editorModal {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  overflow: hidden;
+}
+
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.row-fluid {
+  background-color: #F5F5F5;
+  box-sizing: border-box;
+  box-shadow: inset 0 1px 13px rgba(0, 0, 0, 0.1);
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  position: relative;
+}
+
+.column {
+  background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  padding: 19px;
+  position: relative;
+}
