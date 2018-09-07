@@ -1,11 +1,11 @@
 # visualize
 
 ## 项目简介
-> a jQuery + bootstrap project
 visualize可视化布局系统封装了丰富的Bootstrap3UI控件和ECharts图表集。
 开发者在该系统下可直接通过鼠标拖拽的方式构建web页面，也可以进入编辑区对代码进行编辑以实现页面的自定义展示。
 
 ## 项目结构如下
+> a jQuery + bootstrap project
 ``````````````````````````````````````
 ├─config
 ├─node_modules
@@ -39,7 +39,7 @@ node ./server/app.js
 
 ## 更新日志
 ````````````````````````````````````````````````````````````````
- Version v0.0.2
+ Version v0.0.1
  User songshuzhong@bonc.com.cn
  ------------------------------------------------------------
  Date         Author          Version            Description
@@ -55,7 +55,7 @@ node ./server/app.js
  2018年9月3日 songshuzhong    v0.0.2            重构代码结构、页面布局、代码提示、组件异常捕获
  ````````````````````````````````````````````````````````````````
  ````````````````````````````````````````````````````````````````
-  Version v0.0.2
+  Version v0.0.3
   User songshuzhong@bonc.com.cn
   ------------------------------------------------------------
   Date         Author          Version            Description
