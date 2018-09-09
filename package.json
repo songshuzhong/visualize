@@ -33,8 +33,11 @@
     "koa-static-cache": "^5.1.2",
     "koa-views": "^6.1.4",
     "mysql": "^2.16.0",
+    "mysql2": "^1.6.1",
+    "sequelize": "^4.38.0",
     "swig": "^1.4.2",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"

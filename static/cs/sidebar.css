@@ -41,9 +41,8 @@
   padding: 0;
 }
 .v-sidebar-menu > li > a{
-  padding: 8px;
+  padding: 6px;
   display: block;
-  border-left: 3px solid transparent;
 }
 .v-sidebar-menu > li > a:hover {
   color: #003869;

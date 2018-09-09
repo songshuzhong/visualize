@@ -1,12 +1,10 @@
 /**
- Version v0.0.2
+ Version v0.0.4
  User songshuzhong@bonc.com.cn
- Copyright (C) 1997-present BON Corporation All rights reserved.
  ------------------------------------------------------------
  Date         Author          Version            Description
  ------------------------------------------------------------
- 2018年8月9日 songshuzhong    v0.0.1            修复组件通信
- 2018年9月3日 songshuzhong    v0.0.2            重构代码结构、页面布局、代码提示、组件异常捕获
+ 2018年9月9日 songshuzhong    v0.0.4            采用sequelize持久化解决方案
  */
 window.editorNodeIds = [];
 window. editorNodeRes = [];

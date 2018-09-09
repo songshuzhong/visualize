@@ -9,17 +9,17 @@
 .Validform_right{
   color:#71b83d;
   padding-left:20px;
-  background:url(954993bab25211e88b091402ec8b0a88) no-repeat left center;
+  background:url(../img/right.png) no-repeat left center;
 }
 .Validform_wrong{
   color:red;
   padding-left:20px;
   white-space:nowrap;
-  background:url(9cc3c93fb25211e88b091402ec8b0a88) no-repeat left center;
+  background:url(../img/wrong.png) no-repeat left center;
 }
 .Validform_loading{
   padding-left:20px;
-  background:url(images/onLoad.gif) no-repeat left center;
+  background:url(../img/onLoad.gif) no-repeat left center;
 }
 .Validform_error{
   background-color:#ffe7e7;

@@ -1,12 +1,10 @@
 /**
- Version v0.0.2
+ Version v0.0.4
  User songshuzhong@bonc.com.cn
- Copyright (C) 1997-present BON Corporation All rights reserved.
  ------------------------------------------------------------
  Date         Author          Version            Description
  ------------------------------------------------------------
- 2018年8月9日 songshuzhong    v0.0.1            修复组件通信
- 2018年9月3日 songshuzhong    v0.0.2            重构代码结构、页面布局、代码提示、组件异常捕获
+ 2018年9月9日 songshuzhong    v0.0.4            采用sequelize持久化解决方案
  */
 $(function () {
   window.resCachedList = { js: [], cs: [] };
@@ -14,7 +12,7 @@ $(function () {
     let li = $( e.target ).parent().parent();
     let ul = $( e.target ).parent().next();
     if ( !ul.children().length ) {
-      fetchDataSource( li.attr( 'id' ), ul );
+      fetchDataById( li.attr( 'id' ), ul );
     }
     if ( li.hasClass( 'active' ) ) {
       li.removeClass( 'active' );
@@ -50,24 +48,48 @@ $(function () {
       addScriptAndStyle( e, t );
     }
   } );
+  $( '#v-module-search' ).click( function () {
+    let keyword = $( 'input[name=moduleName]' ).val();
+    let container = $( '#v-side-bar-menu' );
+
+    if ( keyword ) {
+      fetchDataByKeyword( '%' + keyword + '%', container )
+    } else {
+      fetchDataById( 'root', container );
+    }
+    container.empty();
+    return false;
+  } );
   $( '#v-cleanLayout' ).click( function(){ cleanLayout() } );
   $( '#v-savePageModel' ).click( function( e ){ savePageModel( e ) } );
   $( '#v-saveEditorial' ).click( function( e ){ saveEditorial( e ) } );
   $( '#v-pureHtmlTemplate' ).contents().find( 'body' ).html( '<div id="v-main-container" data-uuid="container" />' );
   $( '#v-previewComponentBtn' ).click( function(){ $( '#previewTabs a:last' ).tab( 'show' ); previewEditorial() } );
   bindDroppable();
-  fetchDataSource( 'root', document.getElementById( 'v_side_bar_menu' ) );
+  fetchDataById( 'root', document.getElementById( 'v-side-bar-menu' ) );
   initLayout( pageModel );
 } );
 
-function fetchDataSource( moduleTypeId, container ) {
+function fetchDataByKeyword( keyword, container ) {
+  $.ajax( {
+    type: 'POST',
+    url: path + version + '/api/pageModule/module/search/detail',
+    data: { moduleName: keyword },
+    success: function ( data ) {
+      renderMenuList( data, container );
+    },
+    error: function ( e ) { alert( '服务器出错，返回内容：' + e.responseText ) }
+  } );
+}
+
+function fetchDataById( moduleTypeId, container ) {
   $.ajax( {
     url: path + version + '/api/pageModule/module/type/detail/' + moduleTypeId,
     type: 'GET',
     success: function ( data ) {
       renderMenuList( data, container );
     },
-    error: function ( xhr ) { console.log( '服务器出错，返回内容：' + xhr.responseText ) }
+    error: function ( e ) { alert( '服务器出错，返回内容：' + e.responseText ) }
   } );
 }
 
@@ -109,9 +131,9 @@ function savePageModel() {
   } );
 }
 
-function renderMenuList( datas, container ) {
-  let nodes = datas.nodes;
-  let pageModuleList = datas.pageModuleList;
+function renderMenuList( data, container ) {
+  let nodes = data.nodes;
+  let pageModuleList = data.pageModuleList;
 
   nodes.forEach( ( node ) => { let li = createStaticLi( node ); $( li ).appendTo( container ); } );
 
@@ -212,14 +234,14 @@ function convertTagsId( e,t ) {
     if ( text.includes( 'TEMPLATE_ID_' + i ) ) {
       let id = getUUID();
       text = text.replace( new RegExp( 'TEMPLATE_ID_' + i, 'gm' ), id );
-      if ( js.includes( 'TEMPLATE_ID_' + i ) ) {
+      if ( js.includes( 'TEMPLATE_ID_' + i ) )
         js = js.replace( new RegExp( 'TEMPLATE_ID_' + i, 'gm' ), id );
-      }
-      if ( cs.includes( 'TEMPLATE_ID_' + i ) ) {
+      if ( cs.includes( 'TEMPLATE_ID_' + i ) )
         cs = cs.replace( new RegExp( 'TEMPLATE_ID_' + i, 'gm' ), id );
-      }
-      t.item.find( '#TEMPLATE_ID_' + i ).attr( 'id', id );
-      t.item.find( '[href=#TEMPLATE_ID_'+ i +']' ).attr( 'href', '#' + id );
+      if ( t.item.find( '#TEMPLATE_ID_' + i ) )
+        t.item.find( '#TEMPLATE_ID_' + i ).attr( 'id', id );
+      if ( t.item.find( '[href=#TEMPLATE_ID_'+ i +']' ) )
+        t.item.find( '[href=#TEMPLATE_ID_'+ i +']' ).attr( 'href', '#' + id );
     } else { break; }
   }
 

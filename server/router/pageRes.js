@@ -1,10 +1,8 @@
-const PageResService = require( '../service/pageRes' );
-
-const pageResService = new PageResService();
+const PageRes = require( '../model/pageRes' );
 
 module.exports = {
   'GET /pageRes/res/file/:resId': async( ctx, next ) => {
-    let pageRes = await pageResService.findPageResFileInfo( ctx.params.resId );
-    ctx.body = pageRes[0].res_text;
+    let pageRes = await PageRes.findOne( { where: { resId: ctx.params.resId }, raw: true } );
+    ctx.body = pageRes.resText;
   }
 };

@@ -1,12 +1,10 @@
 <!--
- Version v0.0.2
- User songshuzhong@bonc.com.cn
- Copyright (C) 1997-present BON Corporation All rights reserved.
- ------------------------------------------------------------
- Date         Author          Version            Description
- ------------------------------------------------------------
- 2018年8月9日 songshuzhong    v0.0.1            修复组件通信
- 2018年9月3日 songshuzhong    v0.0.2            重构代码结构、页面布局、代码提示、组件异常捕获
+  Version v0.0.4
+  User songshuzhong@bonc.com.cn
+  ------------------------------------------------------------
+  Date         Author          Version            Description
+  ------------------------------------------------------------
+  2018年9月9日 songshuzhong    v0.0.4            采用sequelize持久化解决方案
 -->
 <!DOCTYPE html>
 <html>
@@ -22,6 +20,7 @@
   <link rel="stylesheet" href="/bower_components/codemirror/theme/dracula.css">
   <link rel="stylesheet" href="/bower_components/codemirror/addon/fold/foldgutter.css">
   <link rel="stylesheet" href="/bower_components/codemirror/theme/eclipse.css">
+  <link rel="stylesheet" href="/cs/validform-v5.3.2.min.css">
   <link rel="stylesheet" href="/cs/show-hint.css">
   <link rel="stylesheet" href="/cs/sidebar.css">
   <script type="text/javascript">
@@ -95,11 +94,11 @@
         <li><a id="v-cleanLayout">清空</a></li>
         <li><a id="v-savePageModel">保存</a></li>
       </ul>
-      <form class="navbar-form navbar-left" role="search">
+      <form id="v-module-form" class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control" name="moduleName" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">搜索</button>
+        <button id="v-module-search" type="submit" class="btn btn-default">搜索</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a><span class="glyphicon glyphicon-cog"></span>&nbsp;设置</a></li>
@@ -108,11 +107,11 @@
   </div>
 </nav>
 <aside class="v-main-sidebar" style="margin-top: 52px">
-  <ul id="v_side_bar_menu" class="v-sidebar v-sidebar-menu"></ul>
+  <ul id="v-side-bar-menu" class="v-sidebar v-sidebar-menu"></ul>
 </aside>
 <aside id="v-main-container" class="container drag drop-helper drop-helper-container" data-uuid="container"></aside>
 <div id="v-editorModal" class="modal fade">
-  <ul id="previewTabs" class="nav nav-tabs">
+  <ul id="previewTabs" class="nav nav-tabs" style="background-color: white">
     <li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
     <li><a href="#js" data-toggle="tab">JS</a></li>
     <li><a href="#cs" data-toggle="tab">CS</a></li>
@@ -149,8 +148,8 @@
   </div>
 </div>
 <iframe id="v-pureHtmlTemplate" style="display: none"></iframe>
-<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui.js"></script>
 <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/bower_components/codemirror/lib/codemirror.js"></script>
 <script type="text/javascript" src="/bower_components/codemirror/addon/fold/foldcode.js"></script>
