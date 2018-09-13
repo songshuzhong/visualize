@@ -23,9 +23,9 @@
   <link rel="stylesheet" href="/plugins/cs/show-hint.css">
   <link rel="stylesheet" href="/cs/sidebar.css">
   <script type="text/javascript">
-    var pageModel = '<%= pageModel %>';
-    var path = '<%= contextPath %>';
-    var version = '<%= version %>';
+    var pageModel = JSON.parse( '{{ JSON.stringify( pageModel ) }}' );
+    var path = '{{ contextPath }}';
+    var version = '{{ version }}';
   </script>
   <style type="text/css">
     body {
@@ -147,7 +147,7 @@
   </div>
 </div>
 <iframe id="v-pureHtmlTemplate" style="display: none"></iframe>
-<script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="/plugins/js/jquery-ui.js"></script>
 <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/bower_components/codemirror/lib/codemirror.js"></script>

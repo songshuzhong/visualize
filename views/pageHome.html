@@ -16,39 +16,6 @@
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/cs/pageHome.css">
 </head>
-<style>
-  @keyframes v-ball-updown {
-    0% {
-      transform: translate3d(0, -5%, 0);
-    }
-    100% {
-      transform: translate3d(0, 3%, 0);
-    }
-  }
-  .v-feature.v-feature-bg {
-    width: 100%;
-    height: calc(100%);
-    position: relative;
-  }
-  .v-ball.ball {
-    height: 0;
-    min-width: 100px;
-    min-height: 100px;
-    position: absolute;
-    border-radius: 100%;
-    animation: v-ball-updown 5s 0s infinite alternate;
-    background: radial-gradient(dodgerblue, white);
-  }
-  .v-feature.v-card {
-    top: 0;
-    position: relative;
-    transition: all .3s ease-in-out;
-  }
-  .thumbnail.normal:hover {
-    top: -5px;
-    box-shadow: 0 6px 18px 0 rgba(232,237,250,.5);
-  }
-</style>
 <script>
   var contextPath = '{{ contextPath }}';
   var version = '{{ version }}';
@@ -74,7 +41,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href=''><span class="glyphicon glyphicon-user"></span>&nbsp;关于</a></li>
           <li><a href="{{ contextPath }}{{ version }}/blog"><span class="glyphicon glyphicon-time"></span>&nbsp;更新日志</a></li>
-          <li><a href="{{ contextPath }}{{ version }}/modulesPicker"><span class="glyphicon glyphicon-gift"></span>&nbsp;组件库</a></li>
+          <li><a href="{{ contextPath }}{{ version }}/pagesPicker"><span class="glyphicon glyphicon-gift"></span>&nbsp;组件库</a></li>
           <li><a href="https://github.com/songshuzhong"><span class="glyphicon glyphicon-link"></span>&nbsp;项目地址</a></li>
         </ul>
       </div>
@@ -119,9 +86,9 @@
           </g>
         </svg>
       </span>
-      <div class="caption">
-        <h3>月缺为诗</h3>
-        <p>床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+      <div class="caption" style="text-align: center">
+        <h4>可视化</h4>
+        <p>所见即所得，随意拖动鼠标即可让编码有图可依。</p>
         <p>
           <a href="#" class="btn btn-primary" role="button">Button</a>
           <a href="#" class="btn btn-default" role="button">Button</a>
@@ -131,10 +98,21 @@
   </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
     <div class="thumbnail normal v-feature v-card">
-      <img src="/img/jsp.png" alt="...">
-      <div class="caption">
-        <h3>月缺为诗</h3>
-        <p>床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+      <span class="svg-icon flat-filled" id="filled-rocket">
+        <svg class="flat_icon" width="100px" height="100px" viewBox="0 0 100 100">
+          <path class="circle" d="M50,2.125c26.441,0,47.875,21.434,47.875,47.875c0,26.441-21.434,47.875-47.875,47.875C17.857,97.875,2.125,76.441,2.125,50C2.125,23.559,23.559,2.125,50,2.125z"></path>
+          <g class="icon">
+            <path class="engine" d="M32.515,51.63l16.327,16.328l-3.571,5.612L26.902,55.2L32.515,51.63z"></path>
+            <path class="base" d="M26.902,46.083l1.021-1.021c0,0,7.669-1.483,14.828-8.643c14.165-14.164,30.583-9.217,30.583-9.217s4.946,16.421-9.216,30.583c-7.159,7.158-8.643,14.829-8.643,14.829l-1.021,1.021L26.902,46.083z"></path>
+            <path class="window" d="M62.619,39.311c2.817,2.818,2.817,7.387,0,10.205c-2.817,2.82-7.388,2.82-10.204,0c-2.817-2.817-2.817-7.386,0-10.205C55.233,36.493,59.802,36.493,62.619,39.311z"></path>
+            <path class="glass" d="M61.09,40.841c1.972,1.974,1.972,5.172,0,7.144c-1.974,1.972-5.171,1.972-7.143,0c-1.973-1.973-1.973-5.171,0-7.144C55.919,38.87,59.116,38.87,61.09,40.841z"></path>
+            <path class="flame" d="M33.326,66.073c1.69,1.692,1.747,4.377,0.126,5.999c-1.859,1.858-6.759,1.656-7.269,1.146c-0.511-0.511-0.713-5.41,1.146-7.27C28.949,64.327,31.635,64.384,33.326,66.073z"></path>
+          </g>
+        </svg>
+      </span>
+      <div class="caption" style="text-align: center">
+        <h4>快速构建</h4>
+        <p>争夺每一秒，让你节省出编码的时间用在喝咖啡上。</p>
         <p>
           <a href="#" class="btn btn-primary" role="button">Button</a>
           <a href="#" class="btn btn-default" role="button">Button</a>
@@ -144,10 +122,21 @@
   </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
     <div class="thumbnail normal v-feature v-card">
-      <img src="/img/jsp.png" alt="...">
-      <div class="caption">
-        <h3>月缺为诗</h3>
-        <p>床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+      <span class="svg-icon flat-filled" id="filled-disk">
+        <svg class="flat_icon" width="100px" height="100px" viewBox="0 0 100 100">
+          <path class="circle" d="M50,2.125c26.441,0,47.875,21.434,47.875,47.875S76.441,97.875,50,97.875C17.857,97.875,2.125,76.441,2.125,50S23.559,2.125,50,2.125z"></path>
+          <g class="icon">
+            <path class="base" d="M72.848,75.133H27.151c-1.262,0-2.285-1.023-2.285-2.285V27.151c0-1.261,1.022-2.284,2.285-2.284h38.843l9.139,9.138v38.842C75.133,74.109,74.109,75.133,72.848,75.133z"></path>
+            <path class="top" d="M65.992,24.867v15.994c0,1.261-1.021,2.285-2.283,2.285H36.29c-1.262,0-2.285-1.023-2.285-2.285V24.867H65.992z"></path>
+            <path class="top_right" d="M55.711,27.914h8.379v12.185h-8.379V27.914z"></path>
+            <path class="bottom" d="M65.992,75.133V53.047c0-1.261-1.021-2.285-2.283-2.285H36.29c-1.262,0-2.285,1.024-2.285,2.285v22.086H65.992z"></path>
+            <path class="text" d="M39.718,58.377h20.563c0.211,0,0.381-0.17,0.381-0.379c0-0.211-0.17-0.381-0.381-0.381H39.718c-0.21,0-0.38,0.17-0.38,0.381C39.337,58.207,39.508,58.377,39.718,58.377z M60.281,63.709H39.718c-0.21,0-0.38,0.172-0.38,0.381c0,0.211,0.17,0.381,0.38,0.381h20.563c0.211,0,0.381-0.17,0.381-0.381C60.662,63.881,60.492,63.709,60.281,63.709z M60.281,69.801H39.718c-0.21,0-0.38,0.172-0.38,0.381c0,0.211,0.17,0.381,0.38,0.381h20.563c0.211,0,0.381-0.17,0.381-0.381C60.662,69.975,60.492,69.801,60.281,69.801z"></path>
+          </g>
+        </svg>
+      </span>
+      <div class="caption" style="text-align: center">
+        <h4>细腻友好</h4>
+        <p>人性化交互，可重复性编辑，让你爱不释手。</p>
         <p>
           <a href="#" class="btn btn-primary" role="button">Button</a>
           <a href="#" class="btn btn-default" role="button">Button</a>
@@ -157,20 +146,30 @@
   </div>
   <div class="col-lg-3 col-md-6 col-xs-12">
     <div class="thumbnail normal v-feature v-card">
-      <img src="/img/jsp.png" alt="...">
-      <div class="caption">
-        <h3>月缺为诗</h3>
-        <p>床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
-        <p>
-          <a href="#" class="btn btn-primary" role="button">Button</a>
-          <a href="#" class="btn btn-default" role="button">Button</a>
-        </p>
-      </div>
-    </div>
+      <span class="svg-icon flat-filled" id="filled-pencil">
+        <svg class="flat_icon" width="100px" height="100px" viewBox="0 0 100 100">
+          <path class="circle" d="M50,4.25c26.441,0,47.875,21.434,47.875,47.875C97.875,78.566,76.441,100,50,100C17.857,100,2.125,78.566,2.125,52.125C2.125,25.684,23.559,4.25,50,4.25z"></path>
+          <g class="icon">
+            <path class="wood" d="M26.683,55.108l16.801,16.84L23.62,75.635L26.683,55.108z"></path>
+            <path class="base_top" d="M53.408,28.524l5.809,5.813L32.489,61.012l-5.807-5.75L53.408,28.524z"></path>
+            <path class="base_bottom" d="M63.639,38.64l6.569,6.572L43.483,71.948l-6.635-6.575L63.639,38.64z"></path>
+            <path class="base_middle" d="M58.868,33.931l6.569,6.573L38.714,67.239l-6.569-6.574L58.868,33.931z"></path>
+            <path class="tip" d="M31.731,74.101l-8.635,1.776l1.776-8.638L31.731,74.101z"></path>
+            <path class="eraser" d="M65.004,23.567l10.455,10.461c1.926,1.926,1.926,5.049,0,6.975L58.03,23.567C59.958,21.642,63.078,21.642,65.004,23.567z"></path>
+            <path class="metal" d="M58.555,22.899l17.429,17.437c0.322,0.321,0.322,0.843,0,1.163l-4.244,4.246c-0.32,0.322-0.841,0.322-1.163,0L53.147,28.308c-0.319-0.32-0.319-0.842,0-1.161l4.245-4.248C57.715,22.578,58.235,22.578,58.555,22.899z"></path>
+          </g>
+        </svg>
+      </span>
+  <div class="caption" style="text-align: center">
+    <h4>简单易学</h4>
+    <p>降低学习成本，让每个人享受开发的乐趣。</p>
+    <p>
+      <a href="#" class="btn btn-primary" role="button">Button</a>
+      <a href="#" class="btn btn-default" role="button">Button</a>
+    </p>
   </div>
-</aside>
-<aside class="v-feature v-feature-bg">
-
+</div>
+  </div>
 </aside>
 <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

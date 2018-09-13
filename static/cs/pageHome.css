@@ -1,14 +1,40 @@
-.flat-filled {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  margin: 40px 30px;
+@keyframes v-ball-updown {
+  0% {
+    transform: translate3d(0, -5%, 0);
+  }
+  100% {
+    transform: translate3d(0, 3%, 0);
+  }
+}
+.v-feature.v-feature-bg {
+  width: 100%;
+  height: calc(100%);
+  position: relative;
+}
+.v-ball.ball {
+  height: 0;
+  min-width: 100px;
+  min-height: 100px;
+  position: absolute;
+  border-radius: 100%;
+  animation: v-ball-updown 5s 0s infinite alternate;
+  background: radial-gradient(dodgerblue, white);
+}
+.v-feature.v-card {
+  top: 0;
+  position: relative;
+  transition: all .3s ease-in-out;
+}
+.thumbnail.normal:hover {
+  top: -5px;
+  box-shadow: 0 6px 18px 0 rgba(232,237,250,.5);
 }
 .svg-icon {
   width: 100%;
-  height: 138px;
+  height: 200px;
   float: left;
   margin: 0;
+  padding: 30px;
   display: block;
   text-align: center;
 }
@@ -19,10 +45,102 @@
   -moz-transform: translate(0px,0px) scale(1,1);
 }
 .flat-filled .icon>path {
-  fill: rgb(128,168,225);
+  fill: #777;
   -moz-transform: translate(0px,0px) scale(1,1);
   -webkit-transform: translate(0px,0px) scale(1,1);
   transform: translate(0px,0px) scale(1,1);
+}
+
+#filled-pencil:hover .circle {
+  fill: #cdefe1
+}
+
+#filled-pencil:hover .wood {
+  fill: #ffc833
+}
+
+#filled-pencil:hover .base_top {
+  fill: #456fd8
+}
+
+#filled-pencil:hover .base_bottom {
+  fill: #3258b6
+}
+
+#filled-pencil:hover .base_middle {
+  fill: #567fe5
+}
+
+#filled-pencil:hover .tip {
+  fill: #567fe5
+}
+
+#filled-pencil:hover .eraser {
+  fill: #ff72b1
+}
+
+#filled-pencil:hover .metal {
+  fill: #c6c6c6
+}
+
+#filled-rocket:hover .circle {
+  fill: #4bae97
+}
+
+#filled-rocket:hover .engine {
+  fill: #7d7d7d
+}
+
+#filled-rocket:hover .base {
+  fill: #b0ced8
+}
+
+#filled-rocket:hover .window {
+  fill: #8babb6
+}
+
+#filled-rocket:hover .glass {
+  fill: #fff
+}
+
+#filled-rocket:hover .flame {
+  fill: #ff5400
+}
+
+#filled-disk .top {
+  fill: #fff
+}
+
+#filled-disk .top_right {
+  fill: #fff
+}
+
+#filled-disk .text {
+  fill: #fff
+}
+
+#filled-disk:hover .circle {
+  fill: #f3cf3f
+}
+
+#filled-disk:hover .base {
+  fill: #5d699b
+}
+
+#filled-disk:hover .top {
+  fill: #b2b2b2
+}
+
+#filled-disk:hover .top_right {
+  fill: #747a90
+}
+
+#filled-disk:hover .bottom {
+  fill: #d9d9c2
+}
+
+#filled-disk:hover .text {
+  fill: #747a90
 }
 #filled-graph:hover .circle {
   fill: #e3a7c0
