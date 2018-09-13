@@ -84,7 +84,7 @@ function fetchDataByKeyword( keyword, container ) {
 
 function fetchDataById( moduleTypeId, container ) {
   $.ajax( {
-    url: path + version + '/api/pageModule/module/type/detail/' + moduleTypeId,
+    url: path + version + '/api/pageModule/module/detail/' + moduleTypeId,
     type: 'GET',
     success: function ( data ) {
       renderMenuList( data, container );
@@ -107,12 +107,12 @@ function savePageModel() {
   };
 
   $.ajax( {
-    url: path + version + '/pageModel/' + pageModel.pageId,
+    url: path + version + '/api/pageModel/' + pageModel.pageId,
     type: 'put',
     dataType: 'json',
     data: model,
     success: function( data ) {
-      if ( data.code == 201 ) {
+      if ( data.code == 204 ) {
         $( '.modal-body' ).html( '保存成功！' );
         shareModal.find( '.modal-header' ).html( '提示' );
         shareModal.find( '.modal-body' ).html( '保存成功！' );

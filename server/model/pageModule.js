@@ -1,3 +1,4 @@
+let dateModel = require( './dateModel' );
 let { dbHelper, Sequelize } = require( '../db/singletonDB' ).getInstance();
 
 const PageModule = dbHelper.define( 'page_module', {
@@ -9,7 +10,8 @@ const PageModule = dbHelper.define( 'page_module', {
   moduleJs: { type: Sequelize.STRING( 500 ), field: 'module_js' },
   moduleTip: { type: Sequelize.STRING( 100 ), field: 'module_tip' },
   pubFlag: { type: Sequelize.INTEGER( 5 ), field: 'pub_flag' },
-  sortId: { type: Sequelize.INTEGER( 5 ), field: 'sort_id' }
+  sortId: { type: Sequelize.INTEGER( 5 ), field: 'sort_id' },
+  ...dateModel
 }, {
   timestamps: false,
   freezeTableName: true

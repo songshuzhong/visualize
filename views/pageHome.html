@@ -1,0 +1,162 @@
+<!--
+  Version v0.0.4
+  User songshuzhong@bonc.com.cn
+  ------------------------------------------------------------
+  Date         Author          Version            Description
+  ------------------------------------------------------------
+  2018年9月9日 songshuzhong    v0.0.4            采用sequelize持久化解决方案
+-->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面建模</title>
+  <link rel="icon" href="/img/favicon.png">
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<style>
+  @keyframes v-ball-updown {
+    0% {
+      transform: translate3d(0, -5%, 0);
+    }
+    100% {
+      transform: translate3d(0, 3%, 0);
+    }
+  }
+  .v-feature.v-feature-bg {
+    width: 100%;
+    height: calc(100%);
+    position: relative;
+  }
+  .v-ball.ball {
+    height: 0;
+    min-width: 100px;
+    min-height: 100px;
+    position: absolute;
+    border-radius: 100%;
+    animation: v-ball-updown 5s 0s infinite alternate;
+    background: radial-gradient(dodgerblue, white);
+  }
+  .v-feature.v-card {
+    top: 0;
+    position: relative;
+    transition: all .3s ease-in-out;
+  }
+  .thumbnail.normal:hover {
+    top: -5px;
+    box-shadow: 0 6px 18px 0 rgba(232,237,250,.5);
+  }
+</style>
+<script>
+  var contextPath = '{{ contextPath }}';
+  var version = '{{ version }}';
+</script>
+<body>
+<aside class="v-feature v-feature-bg">
+  <nav class="navbar navbar-default navbar-fixed-top" style="background-color: transparent; border-bottom-color: transparent; margin-bottom: 0;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#v-is-narrow">
+          <span class="sr-only">切换导航</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <nav>
+          <a class="navbar-brand">
+            <img src="/img/favicon.png" width="30" height="30" style="display: inline-block; margin: -0.25rem 0.75rem 0 0;" alt="">可视化布局系统
+          </a>
+        </nav>
+      </div>
+      <div class="collapse navbar-collapse" id="v-is-narrow">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href=''><span class="glyphicon glyphicon-user"></span>&nbsp;关于</a></li>
+          <li><a href="{{ contextPath }}{{ version }}/blog"><span class="glyphicon glyphicon-time"></span>&nbsp;更新日志</a></li>
+          <li><a href="{{ contextPath }}{{ version }}/modulesPicker"><span class="glyphicon glyphicon-gift"></span>&nbsp;组件库</a></li>
+          <li><a href="https://github.com/songshuzhong"><span class="glyphicon glyphicon-link"></span>&nbsp;项目地址</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="v-ball ball" style="top: 0; left: 0; width: 15%; padding-bottom: 15%"></div>
+  <div class="v-ball ball" style="top: -100px; left: 150px; width: 25%; padding-bottom: 25%;"></div>
+  <div class="v-ball ball" style="top: 200px; right: 200px; width: 5%; padding-bottom: 5%"></div>
+  <div class="v-ball ball" style="bottom: -100px; width: 100%; height: 200px;"></div>
+  <div style="top: 35%; width: 100%; position: absolute; text-align: center">
+    <img src="/img/favicon.png" width="100px" height="100px" style="display: inline-block; margin: -0.25rem 0.75rem 0 0;" alt="">
+    <h1>可视化布局系统</h1>
+    <div id="v-feature-desc" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <h4>灵活易用，了解css、javascript、html即可上手。</h4>
+        </div>
+        <div class="item">
+          <h4>丰富的组件库支持，更加自由的搭配组合网页。</h4>
+        </div>
+        <div class="item">
+          <h4>让开发体验更贴心、美好。</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>
+<aside class="v-feature v-feature-bg" style="background-color: white; padding: 100px 30px;">
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <div class="thumbnail normal v-feature v-card">
+      <img src="/img/jsp.png" alt="...">
+      <div class="caption">
+        <h3>月缺为诗</h3>
+        <p>床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+        <p>
+          <a href="#" class="btn btn-primary" role="button">Button</a>
+          <a href="#" class="btn btn-default" role="button">Button</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <div class="thumbnail normal v-feature v-card">
+      <img src="/img/jsp.png" alt="...">
+      <div class="caption">
+        <h3>月缺为诗</h3>
+        <p>床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+        <p>
+          <a href="#" class="btn btn-primary" role="button">Button</a>
+          <a href="#" class="btn btn-default" role="button">Button</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <div class="thumbnail normal v-feature v-card">
+      <img src="/img/jsp.png" alt="...">
+      <div class="caption">
+        <h3>月缺为诗</h3>
+        <p>床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+        <p>
+          <a href="#" class="btn btn-primary" role="button">Button</a>
+          <a href="#" class="btn btn-default" role="button">Button</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-xs-12">
+    <div class="thumbnail normal v-feature v-card">
+      <img src="/img/jsp.png" alt="...">
+      <div class="caption">
+        <h3>月缺为诗</h3>
+        <p>床前明月光，疑是地上霜。举头望明月，低头思故乡。</p>
+        <p>
+          <a href="#" class="btn btn-primary" role="button">Button</a>
+          <a href="#" class="btn btn-default" role="button">Button</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</aside>
+<script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/pagesHome.js"></script>
+</body>
+</html>

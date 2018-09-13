@@ -17,7 +17,8 @@ const singletonDB = function(){
           dialect: 'mysql',
           host: host,
           port: port,
-          define: { raw: false, underscored: true }
+          define: { underscored: true },
+          query: { raw: true }
         });
       }
 

@@ -127,11 +127,11 @@ function collectStylesheet() {
   for ( let i = 0, length = stylesheets.length; i < length; i++ ) {
     if ( stylesheets[ i ].getAttribute( 'id' ) && !ids.includes( stylesheets[ i ].getAttribute( 'id' ) ) ) {
       ids += stylesheets[ i ].getAttribute( 'id' );
-      purifyStyleHref += "<link rel='stylesheet' id='" + stylesheets[ i ].getAttribute( 'id' ) + "' href='" + stylesheets[ i ].getAttribute( 'href' ) + "'>";
+      purifyStyleHref += '<link rel="stylesheet" id="' + stylesheets[ i ].getAttribute( 'id' ) + '" href="' + stylesheets[ i ].getAttribute( 'href' ) + '">';
     }
   }
 
-  return purifyStylesheet + "\r\n" + purifyStyleHref;
+  return purifyStylesheet + purifyStyleHref;
 }
 
 function collectJavascript() {
@@ -145,11 +145,11 @@ function collectJavascript() {
         ids += javascripts[ i ].getAttribute( 'id' );
         purifyJavascript += javascripts[ i ].outerHTML + '\r\n';
       } else {
-        purifyScriptSrc += "<script type='text/javascript' id='" + javascripts[ i ].getAttribute( 'id' ) + "' async src='" + javascripts[ i ].getAttribute( 'src' ) + "'><\/script>";
+        purifyScriptSrc += '<script type="text/javascript" id="' + javascripts[ i ].getAttribute( 'id' ) + '" async src="' + javascripts[ i ].getAttribute( 'src' ) + '"><\/script>';
       }
     }
   }
-  return purifyScriptSrc + "\r\n" + purifyJavascript;
+  return purifyScriptSrc + purifyJavascript;
 }
 
 function collectNodesRes( e ) {

@@ -1,36 +1,39 @@
-const PageModuleTypes = require( '../model/pageModuleType' );
-const PageModule = require( '../model/pageModule' );
-const PageRes = require( '../model/pageRes' );
-const PageResJoin = require( '../model/pageResJoin' );
-
-PageRes.belongsTo( PageResJoin, { foreignKey: 'res_id' } );
+const uuid = require( 'uuid' );
+const PageModuleType = require( '../model/pageModuleType' );
 
 module.exports = {
-  'GET /api/pageModule/module/type/detail/:moduleTypeId': async( ctx, next ) => {
-    let pageModuleTypes = await PageModuleTypes.findAll( { where: { moduleParentId: ctx.params.moduleTypeId }, raw: true } );
-    let pageModuleList = await PageModule.findAll( { where: { moduleTypeId: ctx.params.moduleTypeId }, raw: true } );
+  'GET /api/pageModule/module/type/detail/:moduleTypeId': async( ctx ) => {
+    let pageModuleTypes = await PageModuleType.findAll( { where: { moduleParentId: ctx.params.moduleTypeId } } );
+    let childPageModuleTypes = await Promise.all( pageModuleTypes.map( async( pageModule ) => await PageModuleType.findAll( { where: { moduleParentId: pageModule.moduleTypeId } } ) ) );
 
-    let pageModulesRes = await Promise.all( pageModuleList.map( async( pageModule ) =>
-      await PageRes.findAll( { include: [ { model: PageResJoin, where: { pageModuleId: pageModule.moduleId }, raw: true } ] } )
-    ) );
-
-    pageModuleList.forEach( ( pageModule, index ) => {
-      pageModule.pageResIds = pageModulesRes[ index ].map( ( res ) => res.resType + ':' + res.resId ).join();
+    pageModuleTypes = pageModuleTypes.map( ( pageModule, index ) => {
+      return {
+        id: pageModule.moduleTypeId,
+        pId: pageModule.moduleParentId,
+        name: pageModule.moduleTypeName,
+        parent: childPageModuleTypes[index]&&childPageModuleTypes[index].length > 0? 1: 0
+      };
     } );
-
-    ctx.rest( { nodes: pageModuleTypes, pageModuleList } );
+    ctx.rest( { nodes: pageModuleTypes } );
   },
-  'POST /api/pageModule/module/search/detail': async( ctx, next ) => {
-    let pageModuleList = await PageModule.findAll( { where: { moduleName: { $like: ctx.request.body.moduleName } }, raw: true } );
-
-    let pageModulesRes = await Promise.all( pageModuleList.map( async( pageModule ) =>
-      await PageRes.findAll( { include: [ { model: PageResJoin, where: { pageModuleId: pageModule.moduleId }, raw: true } ] } )
-    ) );
-
-    pageModuleList.forEach( ( pageModule, index ) => {
-      pageModule.pageResIds = pageModulesRes[ index ].map( ( res ) => res.resType + ':' + res.resId ).join();
+  'POST /api/pageModuleType/module/type': async( ctx ) => {
+    await PageModuleType.create( {
+      ...ctx.request.body,
+      moduleTypeId: uuid().replace( /-/g, '' ),
+      createDate: ctx.state.nowDate,
+      updateDate: ctx.state.nowDate
     } );
-
-    ctx.rest( { nodes: [], pageModuleList } );
+    ctx.rest( { code: 201, message: '添加组件类型成功' } );
   },
+  'PUT /api/pageModuleType/module/type/update/:moduleTypeId': async( ctx ) => {
+    await PageModuleType.update( {
+      ...ctx.request.body,
+      updateDate: ctx.state.nowDate
+    }, { where: { moduleTypeId: ctx.params.moduleTypeId } } );
+    ctx.rest( { code: 204, message: '修改组件类型信息成功' } );
+  },
+  'DELETE /api/pageModuleType/module/type/delete/:moduleTypeId': async( ctx ) => {
+    await PageModuleType.destroy( { where: { moduleTypeId: ctx.params.moduleTypeId } } );
+    ctx.rest( { code: 200, message: '删除组件类型信息成功' } );
+  }
 };
