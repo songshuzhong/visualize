@@ -12,7 +12,7 @@ const app = module.exports = new Koa();
 
 render( app, { root: path.join( __dirname, './../views' ), layout: false, viewExt: 'html' } );
 
-app.use( staticCache( path.resolve( __dirname, './../static' ), { maxAge: 0, gzip: true } ) );
+app.use( staticCache( path.resolve( __dirname, './../static' ) ) );
 
 app.use( bodyParser() );
 app.use( rest.restify() );

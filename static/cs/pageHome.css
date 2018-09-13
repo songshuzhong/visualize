@@ -5,11 +5,12 @@
   margin: 40px 30px;
 }
 .svg-icon {
-  display: inline-block;
-  width: 134px;
+  width: 100%;
   height: 138px;
-  margin: 40px 30px;
   float: left;
+  margin: 0;
+  display: block;
+  text-align: center;
 }
 .flat-filled .circle {
   fill: #fff;
@@ -18,7 +19,7 @@
   -moz-transform: translate(0px,0px) scale(1,1);
 }
 .flat-filled .icon>path {
-  fill: #f26c63;
+  fill: rgb(128,168,225);
   -moz-transform: translate(0px,0px) scale(1,1);
   -webkit-transform: translate(0px,0px) scale(1,1);
   transform: translate(0px,0px) scale(1,1);
