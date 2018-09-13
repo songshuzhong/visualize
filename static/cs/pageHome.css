@@ -1,0 +1,371 @@
+.flat-filled {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 40px 30px;
+}
+.svg-icon {
+  display: inline-block;
+  width: 134px;
+  height: 138px;
+  margin: 40px 30px;
+  float: left;
+}
+.flat-filled .circle {
+  fill: #fff;
+  transform: translate(0px,0px) scale(1,1);
+  -webkit-transform: translate(0px,0px) scale(1,1);
+  -moz-transform: translate(0px,0px) scale(1,1);
+}
+.flat-filled .icon>path {
+  fill: #f26c63;
+  -moz-transform: translate(0px,0px) scale(1,1);
+  -webkit-transform: translate(0px,0px) scale(1,1);
+  transform: translate(0px,0px) scale(1,1);
+}
+#filled-graph:hover .circle {
+  fill: #e3a7c0
+}
+
+#filled-graph:hover .bar_left {
+  fill: #7bc156
+}
+
+#filled-graph:hover .bar_middle {
+  fill: #92d76c
+}
+
+#filled-graph:hover .bar_right {
+  fill: #64a242
+}
+
+@-moz-keyframes left-top {
+  0% {
+    -webki-transform: translate(-100px, -100px) scale(3, 3)
+  }
+  1% {
+    -webkit-transform: translate(-100px, -100px) scale(3, 3)
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px) scale(1, 1)
+  }
+}
+
+@-webkit-keyframes left-top {
+  0% {
+    -webki-transform: translate(-100px, -100px) scale(3, 3)
+  }
+  1% {
+    -webkit-transform: translate(-100px, -100px) scale(3, 3)
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px) scale(1, 1)
+  }
+}
+
+@keyframes left-top {
+  0% {
+    transform: translate(-100px, -100px) scale(3, 3)
+  }
+  1% {
+    transform: translate(-100px, -100px) scale(3, 3)
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1, 1)
+  }
+}
+
+@-moz-keyframes right-top {
+  0% {
+    -webki-transform: translate(100px, -200px) scale(3, 3)
+  }
+  1% {
+    -webkit-transform: translate(100px, -200px) scale(3, 3)
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px) scale(1, 1)
+  }
+}
+
+@-webkit-keyframes right-top {
+  0% {
+    -webki-transform: translate(100px, -200px) scale(3, 3)
+  }
+  1% {
+    -webkit-transform: translate(100px, -200px) scale(3, 3)
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px) scale(1, 1)
+  }
+}
+
+@keyframes right-top {
+  0% {
+    transform: translate(100px, -200px) scale(3, 3)
+  }
+  1% {
+    transform: translate(100px, -200px) scale(3, 3)
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1, 1)
+  }
+}
+
+@-moz-keyframes right {
+  0% {
+    -webki-transform: translate(100px, 0px)
+  }
+  1% {
+    -webkit-transform: translate(100px, 0px)
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px)
+  }
+}
+
+@-webkit-keyframes right {
+  0% {
+    -webki-transform: translate(100px, 0px)
+  }
+  1% {
+    -webkit-transform: translate(100px, 0px)
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px)
+  }
+}
+
+@keyframes right {
+  0% {
+    transform: translate(100px, 0px)
+  }
+  1% {
+    transform: translate(100px, 0px)
+  }
+  100% {
+    transform: translate(0px, 0px)
+  }
+}
+
+@-moz-keyframes left {
+  0% {
+    -webki-transform: translate(-100px, 0px)
+  }
+  1% {
+    -webkit-transform: translate(-100px, 0px)
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px)
+  }
+}
+
+@-webkit-keyframes left {
+  0% {
+    -webki-transform: translate(-100px, 0px)
+  }
+  1% {
+    -webkit-transform: translate(-100px, 0px)
+  }
+  100% {
+    -webkit-transform: translate(0px, 0px)
+  }
+}
+
+@keyframes left {
+  0% {
+    transform: translate(-100px, 0px)
+  }
+  1% {
+    transform: translate(-100px, 0px)
+  }
+  100% {
+    transform: translate(0px, 0px)
+  }
+}
+
+#filled-graph:hover .dot_4, #filled-graph:hover .dot_3, #filled-graph:hover .dot_2, #filled-graph:hover .dot_1 {
+  fill: #fff
+}
+
+#filled-winner:hover .text, #filled-user:hover .hair, #filled-trash:hover .lid, #filled-thumbsdown:hover .base, #filled-thumbsup:hover .base, #filled-suitcase:hover .buttons, #filled-spaceship:hover .light, #filled-screen:hover .highlight, #filled-rocket:hover .glass, #filled-robot:hover .eyes, #filled-robot:hover .ears, #filled-present:hover .ribbon, #filled-plane:hover .middle, #filled-picture:hover .sun, #filled-phone:hover .screen, #filled-pencil:hover .metal, #filled-mic:hover .bars_left, #filled-message:hover .dots, #filled-lock:hover .keyhole, #filled-lightning:hover .highlight, #filled-home:hover .hole, #filled-heart:hover .left, #filled-graph:hover .bar_left, #filled-folder:hover .paper_front, #filled-flag:hover .pole, #filled-film:hover .bottom, #filled-email:hover .text, #filled-disk:hover .bottom, #filled-disk:hover .text, #filled-diamond:hover .middle, #filled-coffee:hover .middle, #filled-clock:hover .seconds, #filled-camera:hover .strip, #filled-calander:hover .left, #filled-brush:hover .brush_silver, #filled-browser:hover .screen {
+  -webkit-animation-delay: .2s;
+  -moz-animation-delay: .2s;
+  -ms-animation-delay: .2s;
+  -o-animation-delay: .2s;
+  animation-delay: .2s;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -ms-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -ms-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50px 50px;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation-duration: .4s;
+  -moz-animation-duration: .4s;
+  -ms-animation-duration: .4s;
+  -o-animation-duration: .4s;
+  animation-duration: .4s;
+  -webkit-animation-name: left;
+  -moz-animation-name: left;
+  -ms-animation-name: left;
+  -o-animation-name: left;
+  animation-name: left
+}
+
+#filled-winner:hover .base, #filled-user:hover .body, #filled-trash:hover .base, #filled-thumbsdown:hover .sleeve, #filled-thumbsup:hover .sleeve, #filled-tag:hover .base, #filled-storm:hover .cloud, #filled-spaceship:hover .base, #filled-screen:hover .base, #filled-rocket:hover .base, #filled-robot:hover .base, #filled-present:hover .base, #filled-picture:hover .mountain, #filled-phone:hover .base, #filled-pencil:hover .base_middle, #filled-paper:hover .base, #filled-mic:hover .bars_right rect, #filled-magnify:hover .glass, #filled-lock:hover .base, #filled-location:hover .inner, #filled-home:hover .base, #filled-graph:hover .bar_middle, #filled-folder:hover .paper_back, #filled-flag:hover .top, #filled-film:hover .base, #filled-email:hover .base, #filled-disk:hover .base, #filled-diamond:hover .right, #filled-coffee:hover .base, #filled-clock:hover .base, #filled-camera:hover .base, #filled-calander:hover .base_top, #filled-browser:hover .base {
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -ms-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -ms-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50px 50px;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation-duration: .4s;
+  -moz-animation-duration: .4s;
+  -ms-animation-duration: .4s;
+  -o-animation-duration: .4s;
+  animation-duration: .4s;
+  -webkit-animation-name: right;
+  -moz-animation-name: right;
+  -ms-animation-name: right;
+  -o-animation-name: right;
+  animation-name: right
+}
+
+#filled-user:hover .head, #filled-thumbsdown:hover .cuff, #filled-thumbsdown:hover .cuff, #filled-suitcase:hover .top, #filled-storm:hover .lightning, #filled-spaceship:hover .circles, #filled-spaceship:hover .glass, #filled-settings:hover .top, #filled-rocket:hover .engine, #filled-robot:hover .highlight, #filled-present:hover .top, #filled-plane:hover .right, #filled-picture:hover .sky, #filled-phone:hover .details, #filled-pencil:hover .eraser, #filled-pencil:hover .base_bottom, #filled-paper:hover .front, #filled-mic:hover .base, #filled-mic:hover .stand, #filled-lock:hover .baselight, #filled-location:hover .base, #filled-lightning:hover .bolt, #filled-home:hover .roof, #filled-heart:hover .base, #filled-graph:hover .bar_right, #filled-graph:hover .dot_4, #filled-flag:hover .bottom, #filled-film:hover .top, #filled-disk:hover .top_right, #filled-diamond:hover .top_right, #filled-diamond:hover .left, #filled-coffee:hover .top, #filled-clock:hover .face, #filled-calander:hover .right, #filled-brush:hover .brush_base, #filled-browser:hover .top {
+  -webkit-animation-delay: .1s;
+  -moz-animation-delay: .1s;
+  -ms-animation-delay: .1s;
+  -o-animation-delay: .1s;
+  animation-delay: .1s;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -ms-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -ms-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50px 50px;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation-duration: .4s;
+  -moz-animation-duration: .4s;
+  -ms-animation-duration: .4s;
+  -o-animation-duration: .4s;
+  animation-duration: .4s;
+  -webkit-animation-name: right-top;
+  -moz-animation-name: right-top;
+  -ms-animation-name: right-top;
+  -o-animation-name: right-top;
+  animation-name: right-top
+}
+
+#filled-winner:hover .ribbon, #filled-trash:hover .details, #filled-thumbsdown:hover .dot, #filled-thumbsup:hover .dot, #filled-tag:hover .dot, #filled-suitcase:hover .bottom, #filled-settings:hover .base, #filled-screen:hover .stand, #filled-rocket:hover .window, #filled-robot:hover .antenna, #filled-plane:hover .left, #filled-picture:hover .front, #filled-pencil:hover .base_top, #filled-paper:hover .corner, #filled-magnify:hover .base, #filled-lock:hover .bar, #filled-graph:hover .dot_3, #filled-flag:hover .shadow, #filled-email:hover .paper, #filled-disk:hover .top, #filled-diamond:hover .top_left, #filled-diamond:hover .top_3, #filled-clock:hover .minute, #filled-camera:hover .flash, #filled-calander:hover .number, #filled-brush:hover .brush_highlight, #filled-browser:hover .green {
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -ms-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -ms-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50px 50px;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation-duration: .4s;
+  -moz-animation-duration: .4s;
+  -ms-animation-duration: .4s;
+  -o-animation-duration: .4s;
+  animation-duration: .4s;
+  -webkit-animation-name: left-top;
+  -moz-animation-name: left-top;
+  -ms-animation-name: left-top;
+  -o-animation-name: left-top;
+  animation-name: left-top
+}
+
+#filled-user:hover .collar_left, #filled-screen:hover .logo, #filled-rocket:hover .flame, #filled-picture:hover .back, #filled-pencil:hover .tip, #filled-paper:hover .text, #filled-message:hover .front, #filled-graph:hover .dot_2, #filled-folder:hover .front, #filled-email:hover .top, #filled-diamond:hover .top_2, #filled-clock:hover .hour, #filled-camera:hover .red, #filled-calander:hover .base_bottom, #filled-browser:hover .orange {
+  -webkit-animation-delay: .05s;
+  -moz-animation-delay: .05s;
+  -ms-animation-delay: .05s;
+  -o-animation-delay: .05s;
+  animation-delay: .05s;
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -ms-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
+  -ms-animation-iteration-count: 1;
+  -o-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50px 50px;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation-duration: .4s;
+  -moz-animation-duration: .4s;
+  -ms-animation-duration: .4s;
+  -o-animation-duration: .4s;
+  animation-duration: .4s;
+  -webkit-animation-name: left-top;
+  -moz-animation-name: left-top;
+  -ms-animation-name: left-top;
+  -o-animation-name: left-top;
+  animation-name: left-top;
+  -webkit-animation-name: left-top;
+  -moz-animation-name: left-top;
+  -ms-animation-name: left-top;
+  -o-animation-name: left-top;
+  animation-name: left-top
+}
+
+#filled-user:hover .collar_right, #filled-plane:hover .bottom, #filled-pencil:hover .wood, #filled-message:hover .back, #filled-graph:hover .dot_1, #filled-folder:hover .back, #filled-diamond:hover .top_1, #filled-clock:hover .middle, #filled-camera:hover .button, #filled-camera:hover .lens, #filled-camera:hover .lens_inner, #filled-brush:hover .brush_tip, #filled-browser:hover .red {
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -ms-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50px 50px;
+  -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-animation-duration: .4s;
+  -moz-animation-duration: .4s;
+  -ms-animation-duration: .4s;
+  -o-animation-duration: .4s;
+  animation-duration: .4s;
+  -webkit-animation-name: left-top;
+  -moz-animation-name: left-top;
+  -ms-animation-name: left-top;
+  -o-animation-name: left-top;
+  animation-name: left-top
+}

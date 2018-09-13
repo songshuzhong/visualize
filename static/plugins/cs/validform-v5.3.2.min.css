@@ -9,13 +9,13 @@
 .Validform_right{
   color:#71b83d;
   padding-left:20px;
-  background:url(../img/right.png) no-repeat left center;
+  background:url(../../img/right.png) no-repeat left center;
 }
 .Validform_wrong{
   color:red;
   padding-left:20px;
   white-space:nowrap;
-  background:url(../img/wrong.png) no-repeat left center;
+  background:url(../../img/wrong.png) no-repeat left center;
 }
 .Validform_loading{
   padding-left:20px;
