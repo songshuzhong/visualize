@@ -1,10 +1,10 @@
 /**
- Version v0.0.4
+ Version v0.0.5
  User songshuzhong@bonc.com.cn
  ------------------------------------------------------------
  Date         Author          Version            Description
  ------------------------------------------------------------
- 2018年9月9日 songshuzhong    v0.0.4            采用sequelize持久化解决方案
+ 2018年9月14日 songshuzhong   v0.0.5            重构代码结构、采用html5原生拖放api
  */
 $(function () {
   window.resCachedList = { js: [], cs: [] };
@@ -34,20 +34,6 @@ $(function () {
   } );
   $( document ).on( 'click', '#view-editor .glyphicon-trash', function( e ){ cleanLayout( e ) } );
   $( document ).on( 'click', '#view-editor .glyphicon-edit', function( e ){ onLayoutEdit( e ) } );
-  $( '.drop-helper' ).sortable( {
-    revert: true,
-    opacity: .35,
-    cancel: '.row',
-    connectWith: '.drop-helper',
-    start: function( e, t ) {
-      convertTagsId( e, t );
-      addResScript( e, t );
-    },
-    stop: function( e, t ) {
-      updateTemplateFrame( e, t );
-      addScriptAndStyle( e, t );
-    }
-  } );
   $( '#v-module-search' ).click( function () {
     let keyword = $( 'input[name=moduleName]' ).val();
     let container = $( '#v-side-bar-menu' );
@@ -65,7 +51,6 @@ $(function () {
   $( '#v-saveEditorial' ).click( function( e ){ saveEditorial( e ) } );
   $( '#v-pureHtmlTemplate' ).contents().find( 'body' ).html( '<div id="v-main-container" data-uuid="container" />' );
   $( '#v-previewComponentBtn' ).click( function(){ $( '#previewTabs a:last' ).tab( 'show' ); previewEditorial() } );
-  bindDroppable();
   fetchDataById( 'root', document.getElementById( 'v-side-bar-menu' ) );
   initLayout( pageModel );
 } );
@@ -137,7 +122,7 @@ function renderMenuList( data, container ) {
 
   nodes.forEach( ( node ) => { let li = createStaticLi( node ); $( li ).appendTo( container ); } );
 
-  pageModuleList.forEach( ( pageModule ) => { let li = createMovableLi( pageModule ); $( li ).appendTo( container ); bindDraggable(); } );
+  pageModuleList.forEach( ( pageModule ) => { let li = createMovableLi( pageModule ); $( li ).appendTo( container ); } );
 }
 
 function createMovableLi( pageModule ) {
@@ -147,7 +132,7 @@ function createMovableLi( pageModule ) {
     '    <a id="' + pageModule.moduleTypeId + '" data-container="drag-helper" data-toggle="tooltip" data-placement="right" title="' + pageModule.moduleTip + '">' +
     '      <i class="glyphicon glyphicon-object-align-horizontal v-angle"></i>' +
     '      <span>' + pageModule.moduleName + '</span>' +
-    '      <i class="drag-helper glyphicon glyphicon-move v-angle-right"></i>' +
+    '      <i class="drag-helper glyphicon glyphicon-move v-angle-right" draggable="true" ondragstart="bindDrag(event)"></i>' +
     '    </a>' +
     '    <div class="view">' +
     '      <span id="view-editor">' +
@@ -164,9 +149,9 @@ function createMovableLi( pageModule ) {
     .attr( 'data-modulejs', pageModule.moduleJs )
     .attr( 'data-moduleres', pageModule.pageResIds );
 
-  if ( pageModule.moduleText.trim().includes( 'force-drop' ) )
+  if ( pageModule.moduleText.trim().includes( 'force drop' ) )
     $( li ).children( '.drag' ).removeClass( 'drag' ).addClass( 'force drag' );
-  else if ( pageModule.moduleText.trim().includes( 'normal-drop' ) )
+  else if ( pageModule.moduleText.trim().includes( 'normal drop' ) )
     $( li ).children( '.drag' ).removeClass( 'drag' ).addClass( 'normal drag' );
   else
     $( li ).children( '.drag' ).removeClass( 'drag' ).addClass( 'weak drag' );
@@ -180,55 +165,59 @@ function createStaticLi( node ) {
   return li;
 }
 
-function bindDraggable() {
-  $( '.v-sidebar-menu .drag' ).draggable( {
-    zIndex:999,
-    scroll: false,
-    revert: 'invalid',
-    helper: 'clone',
-    handle: '.drag-helper',
-    appendTo:'body',
-    connectToSortable: '.drop-helper-container',
-    drag: function( e, t ) {
-      t.helper.width( 400 )
-    },
-    stop: function( e, t ) {
-      $( '.drop-helper' ).sortable( {
-        opacity: .35,
-        connectWith: '.drop-helper',
-        start: function( e, t ) {
-          convertTagsId( e, t );
-          addResScript( e, t );
-        },
-        stop: function( e, t ) {
-          updateTemplateFrame( e, t );
-          addScriptAndStyle( e, t );
-        }
-      } )
-    }
-  } );
+function allowDrop( e ) {
+  e.preventDefault();
 }
 
-function bindDroppable() {
-  $( '.drop-helper' ).sortable( {
-    revert: true,
-    opacity: .35,
-    connectWith: '.drop-helper',
-    start: function( e, t ) {
-      convertTagsId( e, t );
-      addResScript( e, t );
-    },
-    stop: function( e, t ) {
-      updateTemplateFrame( e, t );
-      addScriptAndStyle( e, t );
-    }
-  } );
+function bindDrag( e ) {
+  e.dataTransfer.setData( 'Text', e.target.parentNode.parentNode.parentNode.id );
 }
 
-function convertTagsId( e,t ) {
-  let cs = t.item.attr( 'data-modulecs' );
-  let js = t.item.attr( 'data-modulejs' );
-  let text = t.item.attr( 'data-moduletext' );
+function bindDrop( e ) {
+  e.preventDefault();
+
+  let dragTarget = e.dataTransfer.getData( 'Text' );
+  let dropContainer = e.target;
+  let flag = false;
+
+  if ( $( '#' + dragTarget ).children( '.drag' ).attr( 'data-moduleText' ) ) {
+    dragTarget = document.getElementById( dragTarget ).lastChild.cloneNode( true );
+  } else {
+    dragTarget = document.getElementById( dragTarget );
+  }
+
+  if ( dragTarget.className.includes( 'force drag' ) && dropContainer.id == 'v-main-container' ) {
+    flag = true;
+  } else if ( dragTarget.className.includes( 'normal drag' ) && dropContainer.className.includes( 'force drop' ) ) {
+    flag = true;
+  } else if ( dragTarget.className.includes( 'weak drag' ) && dropContainer.className.includes( 'force drop' ) || dropContainer.className.includes( 'normal drop' ) ) {
+    flag = true;
+  } else {
+    flag = false;
+  }
+
+  if ( flag ) {
+    dropContainer.appendChild( dragTarget );
+    convertTagsId( dragTarget );
+    addResScript( dragTarget );
+    updateTemplateFrame( dragTarget );
+    addScriptAndStyle( dragTarget );
+  } else {
+    $( document.body ).append(
+      '<div class="alert alert-warning" style="position: absolute;bottom: 0;z-index: 999999;width: 100%;margin-bottom: 0;">' +
+      '  <a href="#" class="close" data-dismiss="alert">&times;</a>' +
+      '  <strong>警告！</strong>本次拖放违反组件嵌套规则。请选择正确的父级容器。' +
+      '</div>'
+    );
+  }
+}
+
+function convertTagsId( dragTarget ) {
+  dragTarget = $( dragTarget );
+
+  let cs = dragTarget.attr( 'data-modulecs' );
+  let js = dragTarget.attr( 'data-modulejs' );
+  let text = dragTarget.attr( 'data-moduletext' );
 
   for ( let i = 0; ; i++ ) {
     if ( text.includes( 'TEMPLATE_ID_' + i ) ) {
@@ -238,27 +227,28 @@ function convertTagsId( e,t ) {
         js = js.replace( new RegExp( 'TEMPLATE_ID_' + i, 'gm' ), id );
       if ( cs.includes( 'TEMPLATE_ID_' + i ) )
         cs = cs.replace( new RegExp( 'TEMPLATE_ID_' + i, 'gm' ), id );
-      if ( t.item.find( '#TEMPLATE_ID_' + i ) )
-        t.item.find( '#TEMPLATE_ID_' + i ).attr( 'id', id );
-      if ( t.item.find( '[href=#TEMPLATE_ID_'+ i +']' ) )
-        t.item.find( '[href=#TEMPLATE_ID_'+ i +']' ).attr( 'href', '#' + id );
+      if ( dragTarget.find( '#TEMPLATE_ID_' + i ) )
+        dragTarget.find( '#TEMPLATE_ID_' + i ).attr( 'id', id );
+      if ( dragTarget.find( '[href=#TEMPLATE_ID_'+ i +']' ) )
+        dragTarget.find( '[href=#TEMPLATE_ID_'+ i +']' ).attr( 'href', '#' + id );
     } else { break; }
   }
 
-  t.item.attr( 'id', getUUID() );
-  t.item.attr( 'data-modulecs', cs );
-  t.item.attr( 'data-modulejs', js );
-  t.item.attr( 'data-moduletext', text );
-  t.item.find( 'a[data-container="drag-helper"]' ).each( function() { cleanSelf( this ) } );
+  dragTarget.attr( 'id', getUUID() );
+  dragTarget.attr( 'data-modulecs', cs );
+  dragTarget.attr( 'data-modulejs', js );
+  dragTarget.attr( 'data-moduletext', text );
+  dragTarget.find( 'a[data-container="drag-helper"]' ).each( function() { cleanSelf( this ) } );
 }
 
-function addScriptAndStyle( e, t ) {
-  let id = t.item.attr( 'id' );
-  let moduleJs = t.item.attr( 'data-modulejs' );
-  let moduleStyle = t.item.attr( 'data-modulecs' );
+function addScriptAndStyle( dragTarget ) {
+  dragTarget = $( dragTarget );
+  let id = dragTarget.attr( 'id' );
+  let moduleJs = dragTarget.attr( 'data-modulejs' );
+  let moduleStyle = dragTarget.attr( 'data-modulecs' );
   let shareModal = $( '#v-shareModal' );
 
-  t.item.removeAttr( 'data-modulejs' ).removeAttr( 'data-modulecs' ).removeAttr( 'data-moduletext' );
+  dragTarget.removeAttr( 'data-modulejs' ).removeAttr( 'data-modulecs' ).removeAttr( 'data-moduletext' );
 
   if ( !$( id + 'js' ).length && moduleJs ) {
     try {
@@ -267,7 +257,7 @@ function addScriptAndStyle( e, t ) {
       shareModal.find( '.modal-header' ).html( '组件js异常，本次操作将被取消！' );
       shareModal.find( '.modal-body' ).html( err.toString() );
       shareModal.modal( 'show' );
-      removeScriptAndStyle( e, t );
+      removeScriptAndStyle( dragTarget );
       return;
     }
   }
@@ -279,14 +269,15 @@ function addScriptAndStyle( e, t ) {
       shareModal.find( '.modal-header' ).html( '组件cs异常，本次操作将被取消！' );
       shareModal.find( '.modal-body' ).html( err.toString() );
       shareModal.modal( 'show' );
-      removeScriptAndStyle( e, t );
+      removeScriptAndStyle( dragTarget );
     }
   }
 }
 
-function removeScriptAndStyle( e, t ) {
-  let id = t.item.attr( 'id' );
-  let res = t.item.attr( 'data-moduleres' );
+function removeScriptAndStyle( dragTarget ) {
+  dragTarget = $( dragTarget );
+  let id = dragTarget.attr( 'id' );
+  let res = dragTarget.attr( 'data-moduleres' );
   if ( res ) {
     let resIds = res.split( ',' ).map( res => { res = res.split( ':' ); return { resType: res[ 0 ], resId: res[1] } } );
     resIds.forEach( function( res ) {
@@ -302,8 +293,9 @@ function removeScriptAndStyle( e, t ) {
   $( '#' + id + 'js' ).remove();
 }
 
-function addResScript( e, t ) {
-  let res = t.helper.attr( 'data-moduleres' );
+function addResScript( dragTarget ) {
+  dragTarget = $( dragTarget );
+  let res = dragTarget.attr( 'data-moduleres' );
   if ( res ) {
     let resIds = res.split( ',' ).map( res => { res = res.split( ':' ); return { resType: res[ 0 ], resId: res[1] } } );
     resIds.forEach( function( res ) {
@@ -329,15 +321,16 @@ function addResScript( e, t ) {
   }
 }
 
-function updateTemplateFrame( e, t ) {
-  signUUID( t.item[0] );
+function updateTemplateFrame( dragTarget ) {
+  signUUID( dragTarget );
+  dragTarget = $( dragTarget );
 
-  let ele = transparentTags( t.item.clone() );
+  let ele = transparentTags( dragTarget.clone() );
   let pureHtmlTemplate = $( '#v-pureHtmlTemplate' ).contents();
-  let id = t.item.attr( 'id' );
-  let prevId = findPrevSiblingTag( t.item[ 0 ] );
-  let nextId = findNextSiblingTag( t.item[ 0 ] );
-  let pId = findParentDropHelper( t.item[ 0 ] );
+  let id = dragTarget.attr( 'id' );
+  let prevId = findPrevSiblingTag( dragTarget[ 0 ] );
+  let nextId = findNextSiblingTag( dragTarget[ 0 ] );
+  let pId = findParentDropHelper( dragTarget[ 0 ] );
 
   cleanTags( ele );
 
@@ -353,22 +346,21 @@ function updateTemplateFrame( e, t ) {
   }
 
   $( '#' + id ).replaceWith( $( ele ).clone() );
-  $( '.drop-helper' ).sortable( { opacity: .35, connectWith: '.drop-helper' } );
 }
 
-function transparentTags( ele ) {
-  let id = ele.attr( 'id' );
-  let uuid = ele.attr( 'data-uuid' );
-  let className = ele.attr( 'class' );
+function transparentTags( dragTarget ) {
+  let id = dragTarget.attr( 'id' );
+  let uuid = dragTarget.attr( 'data-uuid' );
+  let className = dragTarget.attr( 'class' );
 
   if ( className.includes( 'normal drag') ) {
-    let views = $( ele.attr( 'data-moduleText' ) )[0];
+    let views = $( dragTarget.attr( 'data-moduleText' ) )[0];
     views.setAttribute( 'id', id );
     views.setAttribute( 'data-uuid', uuid );
     views.className = ( views.className + ' ' + className ).replace( 'normal-drop ', '' ).replace( 'normal drag ', '' );
     return views;
   } else {
-    return ele[0];
+    return dragTarget[0];
   }
 }
 
@@ -379,7 +371,7 @@ function cleanTags( node ) {
         node.parentNode.removeChild( node );
       }
 
-      if ( node.className.includes( 'drag ui-draggable' ) ) {
+      if ( node.className.includes( 'drag' ) ) {
         node.removeAttribute(  'data-modulejs' );
         node.removeAttribute(  'data-modulecs' );
         node.removeAttribute(  'data-moduletext' );

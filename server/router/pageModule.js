@@ -6,7 +6,7 @@ const PageResJoin = require( '../model/pageResJoin' );
 PageRes.belongsTo( PageResJoin, { foreignKey: 'res_id' } );
 
 module.exports = {
-  'GET /pageModuleType/modulesPicker': async( ctx ) => {
+  'GET /modulesPicker': async( ctx ) => {
     await ctx.render( 'modulesPicker', { path: ctx.state.contextPath, version: ctx.state.version } )
   },
   'GET /api/pageModule/module/moduleinfo/:moduleTypeId': async( ctx ) => {

@@ -1,3 +1,30 @@
+footer {
+  color: #fff;
+  background-color: #000;
+}
+footer article {
+  padding-top: 4rem;
+  padding-bottom: 10rem!important;
+  padding-left: 10rem!important;
+}
+footer article a {
+  display: block;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+}
+footer article a:hover {
+  color: #409eff;
+}
+.v-support-logo {
+  margin: 2rem 4rem;
+  text-align: center;
+}
+.v-support-logo img {
+  width: auto;
+  height: 5rem!important;
+  margin: 2rem;
+}
 @keyframes v-ball-updown {
   0% {
     transform: translate3d(0, -5%, 0);
@@ -22,12 +49,40 @@
 }
 .v-feature.v-card {
   top: 0;
+  display: block;
   position: relative;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   transition: all .3s ease-in-out;
 }
-.thumbnail.normal:hover {
+.v-feature.v-card:hover {
   top: -5px;
   box-shadow: 0 6px 18px 0 rgba(232,237,250,.5);
+}
+.v-feature.v-card>.caption>p {
+  padding: 1rem 25px;line-height: 20px;
+}
+.v-feature.v-card>.caption>a {
+  height: 53px;
+  line-height: 52px;
+  font-size: 14px;
+  color: #409eff;
+  border: 0;
+  border-top: 1px solid #eaeefb;
+  cursor: pointer;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0 0 5px 5px;
+  transition: all .3s;
+  text-decoration: none;
+  display: block;
+}
+.v-feature.v-card>.caption>a:hover {
+  color: #fff;
+  background-color: #409eff;
 }
 .svg-icon {
   width: 100%;

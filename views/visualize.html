@@ -1,10 +1,10 @@
 <!--
-  Version v0.0.4
-  User songshuzhong@bonc.com.cn
-  ------------------------------------------------------------
-  Date         Author          Version            Description
-  ------------------------------------------------------------
-  2018年9月9日 songshuzhong    v0.0.4            采用sequelize持久化解决方案
+ Version v0.0.5
+ User songshuzhong@bonc.com.cn
+ ------------------------------------------------------------
+ Date         Author          Version            Description
+ ------------------------------------------------------------
+ 2018年9月14日 songshuzhong   v0.0.5            重构代码结构、采用html5原生拖放api
 -->
 <html>
 <head>
@@ -23,7 +23,6 @@
   <link rel="stylesheet" href="/plugins/cs/show-hint.css">
   <link rel="stylesheet" href="/cs/sidebar.css">
   <script type="text/javascript">
-    var pageModel = JSON.parse( '{{ JSON.stringify( pageModel ) }}' );
     var path = '{{ contextPath }}';
     var version = '{{ version }}';
   </script>
@@ -108,7 +107,7 @@
 <aside class="v-main-sidebar" style="margin-top: 52px">
   <ul id="v-side-bar-menu" class="v-sidebar v-sidebar-menu"></ul>
 </aside>
-<aside id="v-main-container" class="container drag drop-helper drop-helper-container" data-uuid="container"></aside>
+<aside id="v-main-container" class="container body drop drag drop-helper drop-helper-container" data-uuid="container" ondrop="bindDrop(event)" ondragover="allowDrop(event)"></aside>
 <div id="v-editorModal" class="modal fade">
   <ul id="previewTabs" class="nav nav-tabs" style="background-color: white">
     <li class="active"><a href="#html" data-toggle="tab">HTML</a></li>

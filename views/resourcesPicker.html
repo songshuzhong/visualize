@@ -1,0 +1,86 @@
+<!--
+Version v0.0.1
+User songshuzhong@bonc.com.cn
+Copyright (C) 1997-present BON Corporation All rights reserved.
+------------------------------------------------------------
+Date         Author          Version            Description
+------------------------------------------------------------
+2018年8月9日 songshuzhong    v0.0.1            修复组件通信
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资源分类</title>
+  <link rel="icon" href="/img/favicon.png">
+  <link rel="stylesheet" href="/cs/baseclassify.css">
+  <link rel="stylesheet" href="/bower_components/ztree/css/zTreeStyle/zTreeStyle.css">
+  <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css " href="/bower_components/bootstrap-table/dist/bootstrap-table.min.css">
+  <style>
+    aside:before {
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      content: '';
+      background-color: grey;
+    }
+    aside>nav {
+      margin: 10px 0;
+    }
+    .item-breadcrumb {
+      padding: 0;
+      list-style: none;
+    }
+
+    .item-breadcrumb > li {
+      display: inline-block;
+    }
+
+    .item-breadcrumb > li:before {
+      padding: 0 5px;
+      color: #ccc;
+      content: "/\00a0";
+    }
+
+    .item-breadcrumb > li > a {
+      color: #337ab7;
+      text-decoration: none;
+    }
+  </style>
+  <script type="text/javascript">
+    var contextPath = '{{ contextPath }}';
+    var version = '{{ version }}';
+  </script>
+</head>
+<body>
+<header style="overflow-x: hidden; margin: 10px 0;">
+  <div class="col-lg-3">
+    <ol class="item-breadcrumb"></ol>
+  </div>
+  <div class="col-lg-9">
+    <input placeholder="请输入检索关键字"/>
+    <button id="menu-btn-search" class="menu-btn">查找</button>
+    <button id="menu-btn-add" class="menu-btn">新建</button>
+  </div>
+</header>
+<aside>
+  <nav class="col-lg-3">
+    <ul id="pageTypeTree" class="ztree"></ul>
+  </nav>
+  <nav class="col-lg-9">
+    <table id="v-res-table"></table>
+  </nav>
+</aside>
+<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/bower_components/ztree/js/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="/bower_components/ztree/js/jquery.ztree.excheck-3.5.js"></script>
+<script type="text/javascript" src="/bower_components/ztree/js/jquery.ztree.exedit-3.5.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/bower_components/bootstrap-table/dist/bootstrap-table.js"></script>
+<script type="text/javascript" src="/js/commonUtil.js"></script>
+<script type="text/javascript" src="/js/resourcesPicker.js"></script>
+</body>
+</html>
