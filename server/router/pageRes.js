@@ -9,7 +9,7 @@ module.exports = {
   },
   'GET /api/pageResType/restype/detail/:resTypeId': async( ctx ) => {
     let pageResTypes = await PageResType.findAll( { where: { resParentId: ctx.params.resTypeId } } );
-    let childPageResTypes = await Promise.all( pageResTypes.map( async( pageResType ) => await PageResType.findAll( { where: { resParentId: pageResType.resTypeId } } ) ) );
+    let childPageResTypes = await Promise.all( pageResTypes.map( async( pageResType ) => await PageResType.findAll( { where: { resParentId: pageResType.resTypeId }, raw: true } ) ) );
 
     pageResTypes = pageResTypes.map( ( pageResType, index ) => {
       return {

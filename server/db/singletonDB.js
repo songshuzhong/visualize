@@ -14,11 +14,11 @@ const singletonDB = function(){
       if ( !instance ) {
         Sequelize = require( 'sequelize' );
         instance = new Sequelize( database, username, password, {
+          query: { raw: true },
           dialect: 'mysql',
           host: host,
           port: port,
-          define: { underscored: true },
-          query: { raw: true }
+          define: { underscored: true }
         });
       }
 

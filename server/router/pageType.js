@@ -11,7 +11,7 @@ module.exports = {
   },
   'GET /api/pageType/childDetail/:pageTypeId': async( ctx ) => {
     let pageTypes = await PageType.findAll( { where: { pageParentId: ctx.params.pageTypeId } } );
-    let childPageTypes = await Promise.all( pageTypes.map( async( pageType ) => await PageType.findAll( { where: { pageParentId: pageType.pageTypeId } } ) ) );
+    let childPageTypes = await Promise.all( pageTypes.map( async( pageType ) => await PageType.findAll( { where: { pageParentId: pageType.pageTypeId }, raw: true } ) ) );
 
     pageTypes = pageTypes.map( ( pageType, index ) => {
       return {

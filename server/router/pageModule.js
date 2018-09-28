@@ -18,7 +18,7 @@ module.exports = {
     let pageModuleList = await PageModule.findAll( { where: { moduleTypeId: ctx.params.moduleTypeId } } );
 
     let pageModulesRes = await Promise.all( pageModuleList.map( async( pageModule ) =>
-      await PageRes.findAll( { include: [ { model: PageResJoin, where: { pageModuleId: pageModule.moduleId } } ] } )
+      await PageRes.findAll( { include: [ { model: PageResJoin, where: { pageModuleId: pageModule.moduleId } } ], raw: true } )
     ) );
 
     pageModuleList.forEach( ( pageModule, index ) => {
@@ -31,7 +31,7 @@ module.exports = {
     let pageModuleList = await PageModule.findAll( { where: { moduleName: { $like: ctx.request.body.moduleName } } } );
 
     let pageModulesRes = await Promise.all( pageModuleList.map( async( pageModule ) =>
-      await PageRes.findAll( { include: [ { model: PageResJoin, where: { pageModuleId: pageModule.moduleId } } ] } )
+      await PageRes.findAll( { include: [ { model: PageResJoin, where: { pageModuleId: pageModule.moduleId } } ], raw: true } )
     ) );
 
     pageModuleList.forEach( ( pageModule, index ) => {

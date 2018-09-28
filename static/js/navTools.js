@@ -82,6 +82,8 @@ function cleanLayout( e ) {
     $( '#v-pureHtmlTemplate' ).contents().find( '#v-main-container' ).empty();
   }
 
+  window.preparedTarget = null;
+  $( '#v-toolbar' ).css( 'display', 'none' );
   saveLayout( e  );
 }
 
@@ -223,6 +225,7 @@ function initEditorial( e ) {
 function onLayoutEdit( e ) {
   initEditorial( e );
   $( '#v-editorModal' ).modal( 'show' );
+  $( '#v-toolbar' ).css( 'display', 'none');
 
   CodeMirror.commands["selectAll"]( editorialHtmlHelper );
   CodeMirror.commands["selectAll"]( editorialJsHelper );
@@ -231,6 +234,8 @@ function onLayoutEdit( e ) {
   editorialHtmlHelper.autoFormatRange( editorialHtmlHelper.getCursor( true ), editorialHtmlHelper.getCursor( false ) );
   editorialJsHelper.autoFormatRange( editorialJsHelper.getCursor( true ), editorialJsHelper.getCursor( false ) );
   editorialCsHelper.autoFormatRange( editorialCsHelper.getCursor( true ), editorialCsHelper.getCursor( false ) );
+
+  let timer = setTimeout(function() { editorialHtmlHelper.refresh(); clearTimeout( timer ); }, 500 );
 }
 
 function saveEditorial() {

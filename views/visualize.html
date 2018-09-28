@@ -78,12 +78,12 @@
           <a class="dropdown-toggle" data-toggle="dropdown">预览<b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li>
-              <a onclick="directToTemplate()">
+              <a onclick="directToTemplate(0)">
                 <span class="glyphicon glyphicon-blackboard"></span>&nbsp;PC端
               </a>
             </li>
             <li>
-              <a>
+              <a onclick="directToTemplate(1)">
                 <span class="glyphicon glyphicon-phone"></span>&nbsp;移动端
               </a>
             </li>
@@ -107,9 +107,9 @@
 <aside class="v-main-sidebar" style="margin-top: 52px">
   <ul id="v-side-bar-menu" class="v-sidebar v-sidebar-menu"></ul>
 </aside>
-<aside id="v-main-container" class="container body drop drag drop-helper drop-helper-container" data-uuid="container" ondrop="bindDrop(event)" ondragover="allowDrop(event)"></aside>
+<aside id="v-main-container" class="container drop-helper-container" data-uuid="container"></aside>
 <div id="v-editorModal" class="modal fade">
-  <ul id="previewTabs" class="nav nav-tabs" style="background-color: white">
+  <ul id="v-previewTabs" class="nav nav-tabs" style="background-color: white">
     <li class="active"><a href="#html" data-toggle="tab">HTML</a></li>
     <li><a href="#js" data-toggle="tab">JS</a></li>
     <li><a href="#cs" data-toggle="tab">CS</a></li>
@@ -145,6 +145,18 @@
     </div>
   </div>
 </div>
+<div id="v-toolbar" class="btn-group pull-right">
+  <button class="btn btn-default" type="button">
+    <i class="glyphicon glyphicon-edit"></i>
+  </button>
+  <button class="btn btn-default" type="button">
+    <i class="glyphicon glyphicon-trash"></i>
+  </button>
+  <button class="btn btn-default" type="button">
+    <i class="glyphicon glyphicon-off"></i>
+  </button>
+</div>
+<div id="v-guide"></div>
 <iframe id="v-pureHtmlTemplate" style="display: none"></iframe>
 <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="/plugins/js/jquery-ui.js"></script>

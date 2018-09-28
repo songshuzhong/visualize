@@ -2,9 +2,11 @@ const uuid = require( 'uuid' );
 const PageModel = require( '../model/pageModel' );
 
 module.exports = {
-  'GET /pageModel/pageTemplate/:pageId': async( ctx ) => {
-    let pageModel = await PageModel.findOne( { where: { pageId: ctx.params.pageId } } );
-    await ctx.render( 'pagesTemplate', { path: ctx.state.contextPath, version: ctx.state.version, pageModel } )
+  'GET /pageModel/pageTemplate/:mode': async( ctx ) => {
+    ctx.params.mode === 'pc'?
+      await ctx.render( 'pagesTemplate', { path: ctx.state.contextPath, version: ctx.state.version } )
+      :
+      await ctx.render( 'pagesMobile', { path: ctx.state.contextPath, version: ctx.state.version } )
   },
   'GET /api/pageModel/childDetail/:pageTypeId': async( ctx ) => {
     let pageModels = await PageModel.findAll( { where: { pageTypeId: ctx.params.pageTypeId } } );

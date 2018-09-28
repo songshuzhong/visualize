@@ -4,7 +4,7 @@ const PageModuleType = require( '../model/pageModuleType' );
 module.exports = {
   'GET /api/pageModule/module/type/detail/:moduleTypeId': async( ctx ) => {
     let pageModuleTypes = await PageModuleType.findAll( { where: { moduleParentId: ctx.params.moduleTypeId } } );
-    let childPageModuleTypes = await Promise.all( pageModuleTypes.map( async( pageModule ) => await PageModuleType.findAll( { where: { moduleParentId: pageModule.moduleTypeId } } ) ) );
+    let childPageModuleTypes = await Promise.all( pageModuleTypes.map( async( pageModule ) => await PageModuleType.findAll( { where: { moduleParentId: pageModule.moduleTypeId }, raw: true } ) ) );
 
     pageModuleTypes = pageModuleTypes.map( ( pageModule, index ) => {
       return {
